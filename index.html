@@ -1,275 +1,283 @@
-<!DOCTYPE html>
-<html lang="hu" class="dark scroll-smooth">
+<!doctype html>
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YNJIMPIX — Best Casinos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#060507">
+  <meta name="description" content="YNJIMPIX hivatalos oldala — közösségi linkek és partnerinformációk.">
+  <title>ynjimpix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Playfair+Display:ital,wght@1,900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#060507;
+      --ink:#f3ece0;
+      --mute:#8d857a;
+      --gold:#e9b949;
+      --gold-hi:#ffe3a1;
+      --gold-lo:#9a6f1e;
+      --line:rgba(233,185,73,.22);
+      --mint:#19e0b8;
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;min-height:100svh;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body.locked{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    /* háttér: egyetlen reflektorfény + film-szemcse */
+    .spot{position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:radial-gradient(ellipse 60% 45% at 50% -8%,rgba(233,185,73,.22),transparent 70%),
+                 radial-gradient(ellipse 50% 40% at 50% 115%,rgba(120,70,20,.22),transparent 70%)}
+    .grain{position:fixed;inset:-50%;pointer-events:none;z-index:1;opacity:.09;mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation:grain 1.2s steps(6) infinite}
+    @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        spaceBg: '#090a0f',
-                        cardBg: '#13161f',
-                        cardBorder: '#202636',
-                        cyanButton: '#00d2be',
-                        cyanButtonHover: '#00b8a7',
-                        twitchBg: '#18122B',
-                        twitchBorder: '#6441a5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Rajdhani', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    .page{position:relative;z-index:2;width:min(100% - 32px,520px);margin:0 auto;padding:clamp(28px,6vh,64px) 0 36px}
 
-    <style>
-        body {
-            background-color: #08090d;
-            color: #e2e8f0;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            min-h: 100vh;
-        }
+    /* belépő animáció (csak az első belépéskor) */
+    .in-up{opacity:0;transform:translateY(22px)}
+    body.entered .in-up{animation:up .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+    @keyframes up{to{opacity:1;transform:none}}
 
-        /* Starry background effect */
-        .stars-bg {
-            background-image: 
-                radial-gradient(1px 1px at 20px 30px, #ffffff 100%, transparent),
-                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.7) 100%, transparent),
-                radial-gradient(1px 1px at 90px 40px, #ffffff 100%, transparent),
-                radial-gradient(1.5px 1.5px at 160px 120px, rgba(255,255,255,0.9) 100%, transparent),
-                radial-gradient(1px 1px at 230px 190px, rgba(255,255,255,0.5) 100%, transparent),
-                radial-gradient(1px 1px at 310px 80px, #ffffff 100%, transparent),
-                radial-gradient(1.5px 1.5px at 370px 240px, rgba(255,255,255,0.8) 100%, transparent),
-                radial-gradient(1px 1px at 480px 150px, #ffffff 100%, transparent),
-                radial-gradient(1px 1px at 540px 310px, rgba(255,255,255,0.6) 100%, transparent),
-                radial-gradient(1.5px 1.5px at 620px 60px, #ffffff 100%, transparent),
-                radial-gradient(1px 1px at 710px 220px, rgba(255,255,255,0.7) 100%, transparent),
-                radial-gradient(1px 1px at 830px 140px, #ffffff 100%, transparent),
-                radial-gradient(1.5px 1.5px at 920px 300px, rgba(255,255,255,0.8) 100%, transparent);
-            background-repeat: repeat;
-            background-size: 500px 400px;
-        }
+    /* ---------- HERO ---------- */
+    .hero{text-align:center}
+    .seal{position:relative;width:200px;height:200px;margin:0 auto}
+    .seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 40s linear infinite}
+    .seal text{font:700 9.5px "JetBrains Mono",monospace;letter-spacing:.34em;fill:var(--gold);text-transform:uppercase}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .seal .pic{position:absolute;inset:26px;border-radius:50%;overflow:hidden;background:#0c0a0e;display:grid;place-items:center;
+      box-shadow:0 0 0 1px var(--line),0 0 0 6px #0b090c,0 0 0 7px var(--line),0 0 60px rgba(233,185,73,.25);font:900 italic 34px "Playfair Display",serif;color:var(--gold)}
+    .seal .pic img{width:100%;height:100%;object-fit:cover;display:block}
 
-        .casino-card {
-            background-color: #121620;
-            border: 1px solid #1e2638;
-            transition: all 0.25s ease-in-out;
-        }
+    h1{margin:22px 0 0;font:900 italic clamp(54px,16vw,92px)/.95 "Playfair Display",serif;letter-spacing:-.02em;text-transform:lowercase;
+      background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 45%,var(--gold-lo) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 6px 30px rgba(233,185,73,.25))}
+    .role{margin:14px 0 0;font:500 11px "JetBrains Mono",monospace;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
 
-        .casino-card:hover {
-            border-color: #2e3a54;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-        }
+    .links{display:flex;justify-content:center;gap:10px;margin-top:26px}
+    .link{flex:0 1 170px;display:flex;align-items:center;justify-content:center;gap:10px;height:46px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.02em;
+      position:relative;overflow:hidden;transition:color .3s,border-color .3s,transform .3s var(--ease)}
+    .link::before{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(101%);transition:transform .35s var(--ease);z-index:-1}
+    .link{z-index:0}
+    .link:hover{color:#150f03;border-color:var(--gold);transform:translateY(-2px)}
+    .link:hover::before{transform:none}
 
-        /* Banner styling */
-        .banner-sixty {
-            background: linear-gradient(135deg, #2b114d 0%, #150928 100%);
-            border: 1px solid rgba(139, 92, 246, 0.25);
-        }
-    </style>
+    /* ---------- JEGY ---------- */
+    .ticket{position:relative;margin-top:44px;filter:drop-shadow(0 30px 50px rgba(0,0,0,.7))}
+    .tk-top,.tk-stub{background:linear-gradient(160deg,#17120a 0%,#0d0a07 60%,#120d07 100%);border:1px solid var(--line)}
+    .tk-top{border-radius:22px 22px 0 0;border-bottom:0;padding:0;overflow:hidden;position:relative}
+    .tk-brand{position:relative;height:150px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+      background:radial-gradient(ellipse at 50% 120%,rgba(160,100,255,.35),transparent 62%),linear-gradient(135deg,#150b22,#0a0710 60%,#1a0b2a)}
+    .tk-brand::after{content:"";position:absolute;top:0;left:-70%;width:35%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent);transform:skewX(-20deg);animation:sweep 6s ease-in-out infinite}
+    @keyframes sweep{0%,60%{left:-70%}100%{left:170%}}
+    .tk-brand img{position:relative;z-index:1;max-width:min(78%,300px);max-height:110px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(170,110,255,.5))}
+    .tk-brand .txt{position:relative;z-index:1;font:800 38px Inter;letter-spacing:-.02em;text-shadow:0 0 30px rgba(170,110,255,.7)}
+    .tk-brand .txt b{color:#c79bff}
+    .tk-body{padding:22px 24px 26px}
+    .tk-meta{display:flex;justify-content:space-between;font:500 10px "JetBrains Mono",monospace;letter-spacing:.22em;color:var(--mute);text-transform:uppercase}
+    .tk-meta i{color:var(--gold);font-style:normal}
+    .tk-body h2{margin:12px 0 6px;font-size:22px;letter-spacing:-.01em}
+    .tk-body p{margin:0;color:var(--mute);font-size:13px;line-height:1.6}
+    .cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;height:52px;border-radius:14px;
+      background:linear-gradient(100deg,var(--mint),#0fb996);color:#03130f;font-weight:800;font-size:14px;letter-spacing:.04em;transition:transform .3s var(--ease),box-shadow .3s;box-shadow:0 10px 30px rgba(25,224,184,.22)}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(25,224,184,.4)}
+    .cta i{transition:transform .3s var(--ease)}
+    .cta:hover i{transform:translate(3px,-3px)}
+
+    /* perforáció */
+    .perf{position:relative;height:0}
+    .perf::before,.perf::after{content:"";position:absolute;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--line);z-index:3}
+    .perf::before{left:-14px;clip-path:inset(0 0 0 50%)}
+    .perf::after{right:-14px;clip-path:inset(0 50% 0 0)}
+    .perf hr{position:absolute;left:18px;right:18px;top:0;margin:0;border:0;border-top:2px dashed rgba(233,185,73,.3);z-index:2}
+
+    .tk-stub{border-radius:0 0 22px 22px;border-top:0;padding:26px 24px 22px;text-align:center}
+    .tk-stub small{display:block;font:500 10px "JetBrains Mono",monospace;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+    .code{margin:10px 0 16px;font:700 clamp(30px,9vw,44px) "JetBrains Mono",monospace;letter-spacing:.14em;color:var(--gold-hi);text-shadow:0 0 28px rgba(233,185,73,.4);cursor:pointer;user-select:all;font-variant-numeric:tabular-nums}
+    .copy{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 20px;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold-hi);font-weight:700;font-size:13px;cursor:pointer;transition:background .25s,color .25s,transform .25s var(--ease)}
+    .copy:hover{background:var(--gold);color:#150f03;transform:translateY(-2px)}
+    .copy.ok{background:var(--mint);border-color:var(--mint);color:#03130f}
+    .fine{margin:20px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);color:#7f776c;font-size:11px;line-height:1.7;text-align:left}
+    .fine b{color:var(--gold)}
+
+    .foot{margin-top:30px;text-align:center;color:#5f584f;font:500 10px "JetBrains Mono",monospace;letter-spacing:.2em;text-transform:uppercase;line-height:2}
+
+    .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:50;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:#15110b;font-size:13px;font-weight:600;transition:all .35s var(--ease)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    /* ---------- KAPU ---------- */
+    .gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(3,2,4,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+    .gate.active{opacity:1;visibility:visible}
+    .gate-card{width:100%;max-width:400px;padding:32px 26px 24px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(170deg,#17120a,#0a0807);text-align:center;box-shadow:0 40px 100px #000;transform:translateY(18px) scale(.97);opacity:0;transition:transform .5s var(--ease),opacity .35s}
+    .gate.active .gate-card{transform:none;opacity:1}
+    .gate-badge{width:58px;height:58px;margin:0 auto 16px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;color:var(--gold-hi)}
+    .gate-card h2{margin:0 0 4px;font-size:21px}
+    .gate-card p{margin:0 0 20px;color:var(--mute);font-size:12px}
+    .opt{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:13px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;text-align:left;font-size:13.5px;font-weight:500;color:#ddd4c6;cursor:pointer;user-select:none;transition:border-color .2s,background .2s}
+    .opt:has(input:checked){border-color:var(--gold);background:rgba(233,185,73,.07)}
+    .opt input{appearance:none;-webkit-appearance:none;margin:0;flex:none;width:20px;height:20px;border:1.5px solid rgba(233,185,73,.55);border-radius:6px;display:grid;place-items:center;cursor:pointer;transition:all .2s}
+    .opt input:checked{background:var(--gold);border-color:var(--gold)}
+    .opt input:checked::before{content:"\f00c";font:900 11px "Font Awesome 6 Free";color:#150f03}
+    .opt input:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+    .go{width:100%;height:50px;margin-top:12px;border:0;border-radius:13px;background:#37332d;color:#8b857b;font-weight:800;font-size:14px;cursor:not-allowed;transition:all .3s var(--ease)}
+    .go.on{background:linear-gradient(100deg,var(--mint),#0fb996);color:#03130f;cursor:pointer;box-shadow:0 10px 26px rgba(25,224,184,.3)}
+    .go.on:hover{transform:translateY(-2px)}
+    .no{width:100%;height:44px;margin-top:8px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:transparent;color:#80796f;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s}
+    .no:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .shake{animation:shake .4s}
+    @keyframes shake{25%,75%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
+
+    @media (max-width:420px){.links{flex-direction:column}.link{flex-basis:auto}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.001ms!important}.in-up{opacity:1;transform:none}}
+  </style>
 </head>
-<body class="stars-bg min-h-screen flex flex-col justify-between items-center py-10 px-4">
+<body class="locked">
+  <div class="spot" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-    <div class="w-full max-w-5xl flex flex-col items-center">
-        
-        <!-- Header Profile Avatar -->
-        <header class="flex flex-col items-center text-center mb-10">
-            <!-- Profile Image -->
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-0.5 bg-gradient-to-b from-yellow-500/80 to-amber-700/80 shadow-2xl mb-4 overflow-hidden">
-                <img 
-                    src="image_4.png" 
-                    alt="YNJIMPIX Profile" 
-                    class="w-full h-full object-cover rounded-full"
-                    onerror="this.onerror=null; this.src='image_3.png';"
-                >
-            </div>
+  <main class="page" id="app">
+    <header class="hero">
+      <div class="seal in-up" style="--d:.05s">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="ring" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs>
+          <text><textPath href="#ring">18+ · játssz felelősen · 18+ · játssz felelősen · 18+ · játssz felelősen · </textPath></text>
+        </svg>
+        <div class="pic" id="pic">
+          <img src="avatar.png" alt="YNJIMPIX" onerror="this.remove();document.getElementById('pic').textContent='yn'">
+        </div>
+      </div>
+      <h1 class="in-up" style="--d:.15s">ynjimpix</h1>
+      <p class="role in-up" style="--d:.25s">streamer · content creator</p>
+      <nav class="links in-up" style="--d:.35s" aria-label="Közösségi linkek">
+        <a class="link" href="https://www.twitch.tv/ynjimpix" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitch"></i> Twitch</a>
+        <a class="link" href="https://discord.gg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Discord</a>
+      </nav>
+    </header>
 
-            <!-- Main Username -->
-            <h1 class="font-display font-black text-3xl sm:text-4xl tracking-widest text-white uppercase mb-1">
-                YNJIMPIX
-            </h1>
+    <section class="ticket in-up" style="--d:.5s" aria-label="Sixty.gg partnerinformáció">
+      <div class="tk-top">
+        <div class="tk-brand">
+          <img src="sixty.png" alt="Sixty.GG" onerror="this.remove();document.getElementById('sixtyTxt').hidden=false">
+          <div class="txt" id="sixtyTxt" hidden>Sixty<b>.GG</b></div>
+        </div>
+        <div class="tk-body">
+          <div class="tk-meta"><span>Partner</span><i>● Hivatalos</i></div>
+          <h2>Sixty.gg</h2>
+          <p>Az aktuális feltételeket mindig a szolgáltató oldalán ellenőrizd.</p>
+          <a class="cta" href="https://sixty.gg/?ref=ynjimpix" target="_blank" rel="noopener noreferrer">Partneroldal megnyitása <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+      <div class="perf" aria-hidden="true"><hr></div>
+      <div class="tk-stub">
+        <small>Promóciós kód</small>
+        <div class="code" id="code" data-code="YNJIMPIX" title="Kattints a másoláshoz">YNJIMPIX</div>
+        <button class="copy" id="copy" type="button"><i class="fa-regular fa-copy"></i><span id="copyTxt">Kód másolása</span></button>
+        <p class="fine"><b>18+ kizárólag.</b> A szerencsejáték pénzügyi kockázattal jár, és veszteséghez vezethet. Csak a helyi jogszabályoknak megfelelően, nagykorúként tájékozódj. A feltételek változhatnak, nyereményt nem garantálunk.</p>
+      </div>
+    </section>
 
-            <!-- Subtitle -->
-            <p class="text-xs sm:text-sm font-semibold tracking-wider text-slate-400 uppercase mb-5">
-                CONTENT CREATOR & STREAMER
-            </p>
+    <footer class="foot in-up" style="--d:.7s">© <span id="y"></span> ynjimpix<br>18+ · játssz felelősen</footer>
+  </main>
 
-            <!-- Social Links -->
-            <div class="flex items-center gap-3">
-                <!-- Twitch Button -->
-                <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-1.5 rounded-md bg-[#18122B] border border-[#6441a5] text-white text-xs font-semibold hover:bg-[#6441a5] transition-colors duration-200">
-                    <i class="fa-brands fa-twitch text-sm"></i>
-                    <span>Twitch</span>
-                </a>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-                <!-- Discord Button -->
-                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-1.5 rounded-md bg-[#141824] border border-[#2e3850] text-white text-xs font-semibold hover:bg-[#2e3850] transition-colors duration-200">
-                    <i class="fa-brands fa-discord text-sm"></i>
-                    <span>Discord</span>
-                </a>
-            </div>
-        </header>
-
-        <!-- Main Section Container -->
-        <main class="w-full max-w-4xl">
-            
-            <!-- Section Header -->
-            <div class="flex items-center gap-2 mb-6">
-                <div class="w-1 h-5 bg-amber-400 rounded-sm"></div>
-                <div class="text-amber-400 text-lg">★</div>
-                <h2 class="font-display font-bold text-xl sm:text-2xl text-white tracking-wide">
-                    Best Casinos
-                </h2>
-            </div>
-
-            <!-- Sponsor Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                
-                <!-- Card 1: Sixty.gg (Primary Sponsor) -->
-                <div class="casino-card rounded-xl p-4 flex flex-col justify-between">
-                    <div>
-                        <!-- Casino Banner Header -->
-                        <div class="banner-sixty h-32 rounded-lg flex flex-col items-center justify-center p-3 mb-4 relative overflow-hidden group">
-                            <!-- Sixty Logo Image -->
-                            <img 
-                                src="watermarked_img_10868399477086026261.jpg" 
-                                alt="Sixty.gg" 
-                                class="h-12 object-contain filter drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]"
-                                onerror="this.onerror=null; this.src='image_5.png';"
-                            >
-                        </div>
-
-                        <!-- Offer Feature List -->
-                        <div class="space-y-2 mb-6 px-1">
-                            <div class="flex items-start gap-2 text-xs font-medium text-slate-200">
-                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
-                                <span>100%-os Befizetési Bónusz $1,000-ig</span>
-                            </div>
-                            
-                            <!-- Copyable Promo Code Feature Line -->
-                            <div 
-                                onclick="copyCode('YNJIMPIX')" 
-                                class="flex items-start gap-2 text-xs font-medium text-slate-200 cursor-pointer hover:text-amber-300 transition-colors group"
-                                title="Kattints a kód másolásához!"
-                            >
-                                <i class="fa-solid fa-check text-slate-400 group-hover:text-amber-400 mt-0.5 shrink-0"></i>
-                                <span>USE CODE: <strong class="text-amber-400 underline decoration-dashed">YNJIMPIX</strong></span>
-                                <i class="fa-regular fa-copy text-[10px] text-slate-400 ml-auto self-center opacity-70 group-hover:opacity-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA Play Button -->
-                    <a 
-                        href="https://sixty.gg/?ref=ynjimpix" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="w-full py-2.5 px-4 rounded-md bg-cyanButton hover:bg-cyanButtonHover text-slate-950 font-bold text-xs uppercase tracking-wider text-center transition-colors duration-200 shadow-md block"
-                    >
-                        Játék most
-                    </a>
-                </div>
-
-                <!-- Card 2: Placeholder Slot (Matches screenshot style) -->
-                <div class="casino-card rounded-xl p-4 flex flex-col justify-between opacity-80 hover:opacity-100">
-                    <div>
-                        <div class="bg-[#182030] h-32 rounded-lg flex items-center justify-center p-3 mb-4">
-                            <span class="font-bold text-slate-400 text-sm tracking-wider uppercase">Hamarosan...</span>
-                        </div>
-                        <div class="space-y-2 mb-6 px-1">
-                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
-                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
-                                <span>Exkluzív Üdvözlő Bónuszok</span>
-                            </div>
-                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
-                                <i class="fa-solid fa-check text-slate-400 mt-0.5 shrink-0"></i>
-                                <span>USE CODE: YNJIMPIX</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button disabled class="w-full py-2.5 px-4 rounded-md bg-slate-800 text-slate-500 font-bold text-xs uppercase tracking-wider text-center cursor-not-allowed">
-                        Hamarosan
-                    </button>
-                </div>
-
-                <!-- Card 3: Placeholder Slot -->
-                <div class="casino-card rounded-xl p-4 flex flex-col justify-between opacity-80 hover:opacity-100">
-                    <div>
-                        <div class="bg-[#182030] h-32 rounded-lg flex items-center justify-center p-3 mb-4">
-                            <span class="font-bold text-slate-400 text-sm tracking-wider uppercase">Hamarosan...</span>
-                        </div>
-                        <div class="space-y-2 mb-6 px-1">
-                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
-                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
-                                <span>Kiemelt VIP Rakeback</span>
-                            </div>
-                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
-                                <i class="fa-solid fa-check text-slate-400 mt-0.5 shrink-0"></i>
-                                <span>USE CODE: YNJIMPIX</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button disabled class="w-full py-2.5 px-4 rounded-md bg-slate-800 text-slate-500 font-bold text-xs uppercase tracking-wider text-center cursor-not-allowed">
-                        Hamarosan
-                    </button>
-                </div>
-
-            </div>
-
-        </main>
-
+  <!-- 18+ kapu: alapból aktív, és minden visszatéréskor újra kiugrik -->
+  <div class="gate active" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
+    <div class="gate-card" id="gcard">
+      <div class="gate-badge">18+</div>
+      <h2 id="gt">Access Verification</h2>
+      <p>This check appears every time you come back to the page.</p>
+      <label class="opt"><input type="checkbox" id="c1"><span>I confirm I am 18 or older.</span></label>
+      <label class="opt"><input type="checkbox" id="c2"><span>I am outside Hungary.</span></label>
+      <button class="go" id="go" type="button" disabled>Confirm, Enter</button>
+      <button class="no" id="no" type="button">No, take me away!</button>
     </div>
+  </div>
 
-    <!-- Copy Toast Notification -->
-    <div id="toast" class="fixed bottom-6 bg-slate-900 border border-amber-400/50 text-white text-xs px-4 py-2.5 rounded-lg shadow-xl transition-all duration-300 opacity-0 translate-y-6 pointer-events-none flex items-center gap-2 z-50">
-        <i class="fa-solid fa-circle-check text-amber-400"></i>
-        <span>Promóciós kód kimásolva: <strong class="text-amber-400">YNJIMPIX</strong></span>
-    </div>
+  <script>
+  (() => {
+    const $ = id => document.getElementById(id);
+    const app = $('app'), gate = $('gate'), gcard = $('gcard'), c1 = $('c1'), c2 = $('c2'), go = $('go');
+    const code = $('code'), copy = $('copy'), copyTxt = $('copyTxt'), toast = $('toast');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ignoreBlurUntil = 0, toastT, firstEnter = true;
+    $('y').textContent = new Date().getFullYear();
 
-    <!-- Footer -->
-    <footer class="mt-16 text-center text-[11px] text-slate-600">
-        <p>18+ | Felelősségteljes szerencsejáték</p>
-    </footer>
+    /* kód "pörgetés" – minden belépéskor és másoláskor lefut */
+    const GLYPHS = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
+    function reel(){
+      const target = code.dataset.code;
+      if (reduce) { code.textContent = target; return; }
+      let frame = 0;
+      const total = 26;
+      const id = setInterval(() => {
+        frame++;
+        const settled = Math.floor((frame / total) * target.length);
+        code.textContent = target.split('').map((ch, i) => i < settled ? ch : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]).join('');
+        if (frame >= total) { clearInterval(id); code.textContent = target; }
+      }, 38);
+    }
 
-    <!-- Interactive Script -->
-    <script>
-        function copyCode(codeText) {
-            const tempInput = document.createElement('input');
-            tempInput.value = codeText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            
-            try {
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
+    /* kapu */
+    function sync(){ const ok = c1.checked && c2.checked; go.disabled = !ok; go.classList.toggle('on', ok); }
+    function lock(){
+      c1.checked = false; c2.checked = false; sync();
+      gate.classList.add('active'); app.inert = true; document.body.classList.add('locked');
+      toast.classList.remove('show');
+      if (!document.hidden) setTimeout(() => c1.focus({preventScroll:true}), 80);
+    }
+    function unlock(){
+      gate.classList.remove('active'); app.inert = false; document.body.classList.remove('locked');
+      if (firstEnter) { firstEnter = false; document.body.classList.add('entered'); }
+      setTimeout(reel, 450);
+    }
+    c1.addEventListener('change', sync); c2.addEventListener('change', sync);
+    go.addEventListener('click', () => {
+      if (c1.checked && c2.checked) unlock();
+      else { gcard.classList.remove('shake'); void gcard.offsetWidth; gcard.classList.add('shake'); }
+    });
+    $('no').addEventListener('click', () => { location.href = 'https://www.google.com'; });
 
-                const toast = document.getElementById('toast');
-                toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
-                toast.classList.add('opacity-100', 'translate-y-0');
+    // elhagyás / visszatérés
+    document.addEventListener('visibilitychange', () => { if (document.hidden) lock(); });
+    window.addEventListener('blur', () => { if (Date.now() > ignoreBlurUntil) lock(); });
+    window.addEventListener('pagehide', lock);
+    window.addEventListener('pageshow', lock);
+    gate.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.preventDefault(); return; }
+      if (e.key !== 'Tab') return;
+      const f = [...gate.querySelectorAll('input,button:not([disabled])')], a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+    });
 
-                setTimeout(() => {
-                    toast.classList.remove('opacity-100', 'translate-y-0');
-                    toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
-                }, 2200);
-            } catch (err) {
-                console.error('Copy failed:', err);
-            }
+    /* másolás */
+    function showToast(m){ toast.textContent = m; toast.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('show'), 2400); }
+    async function doCopy(){
+      const t = code.dataset.code;
+      ignoreBlurUntil = Date.now() + 1500;
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(t);
+        else {
+          const f = document.createElement('textarea'); f.value = t; f.readOnly = true; f.style.cssText = 'position:fixed;opacity:0';
+          document.body.appendChild(f); f.select(); const ok = document.execCommand('copy'); f.remove(); if (!ok) throw 0;
         }
-    </script>
+        copyTxt.textContent = 'Kimásolva!'; copy.classList.add('ok'); showToast('Kód kimásolva: ' + t); reel();
+      } catch { showToast('Nem sikerült, jelöld ki és másold ki a kódot.'); }
+      setTimeout(() => { copyTxt.textContent = 'Kód másolása'; copy.classList.remove('ok'); }, 2200);
+    }
+    copy.addEventListener('click', doCopy);
+    code.addEventListener('click', doCopy);
+
+    lock();
+  })();
+  </script>
 </body>
 </html>
