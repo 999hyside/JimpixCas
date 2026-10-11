@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="hu" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YNJIMPIX — Best Casinos</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        spaceBg: '#090a0f',
+                        cardBg: '#13161f',
+                        cardBorder: '#202636',
+                        cyanButton: '#00d2be',
+                        cyanButtonHover: '#00b8a7',
+                        twitchBg: '#18122B',
+                        twitchBorder: '#6441a5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08090d;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-h: 100vh;
+        }
+
+        /* Starry background effect */
+        .stars-bg {
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #ffffff 100%, transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.7) 100%, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffffff 100%, transparent),
+                radial-gradient(1.5px 1.5px at 160px 120px, rgba(255,255,255,0.9) 100%, transparent),
+                radial-gradient(1px 1px at 230px 190px, rgba(255,255,255,0.5) 100%, transparent),
+                radial-gradient(1px 1px at 310px 80px, #ffffff 100%, transparent),
+                radial-gradient(1.5px 1.5px at 370px 240px, rgba(255,255,255,0.8) 100%, transparent),
+                radial-gradient(1px 1px at 480px 150px, #ffffff 100%, transparent),
+                radial-gradient(1px 1px at 540px 310px, rgba(255,255,255,0.6) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 620px 60px, #ffffff 100%, transparent),
+                radial-gradient(1px 1px at 710px 220px, rgba(255,255,255,0.7) 100%, transparent),
+                radial-gradient(1px 1px at 830px 140px, #ffffff 100%, transparent),
+                radial-gradient(1.5px 1.5px at 920px 300px, rgba(255,255,255,0.8) 100%, transparent);
+            background-repeat: repeat;
+            background-size: 500px 400px;
+        }
+
+        .casino-card {
+            background-color: #121620;
+            border: 1px solid #1e2638;
+            transition: all 0.25s ease-in-out;
+        }
+
+        .casino-card:hover {
+            border-color: #2e3a54;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Banner styling */
+        .banner-sixty {
+            background: linear-gradient(135deg, #2b114d 0%, #150928 100%);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+        }
+    </style>
+</head>
+<body class="stars-bg min-h-screen flex flex-col justify-between items-center py-10 px-4">
+
+    <div class="w-full max-w-5xl flex flex-col items-center">
+        
+        <!-- Header Profile Avatar -->
+        <header class="flex flex-col items-center text-center mb-10">
+            <!-- Profile Image -->
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-0.5 bg-gradient-to-b from-yellow-500/80 to-amber-700/80 shadow-2xl mb-4 overflow-hidden">
+                <img 
+                    src="image_4.png" 
+                    alt="YNJIMPIX Profile" 
+                    class="w-full h-full object-cover rounded-full"
+                    onerror="this.onerror=null; this.src='image_3.png';"
+                >
+            </div>
+
+            <!-- Main Username -->
+            <h1 class="font-display font-black text-3xl sm:text-4xl tracking-widest text-white uppercase mb-1">
+                YNJIMPIX
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xs sm:text-sm font-semibold tracking-wider text-slate-400 uppercase mb-5">
+                CONTENT CREATOR & STREAMER
+            </p>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-3">
+                <!-- Twitch Button -->
+                <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-1.5 rounded-md bg-[#18122B] border border-[#6441a5] text-white text-xs font-semibold hover:bg-[#6441a5] transition-colors duration-200">
+                    <i class="fa-brands fa-twitch text-sm"></i>
+                    <span>Twitch</span>
+                </a>
+
+                <!-- Discord Button -->
+                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-1.5 rounded-md bg-[#141824] border border-[#2e3850] text-white text-xs font-semibold hover:bg-[#2e3850] transition-colors duration-200">
+                    <i class="fa-brands fa-discord text-sm"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Section Container -->
+        <main class="w-full max-w-4xl">
+            
+            <!-- Section Header -->
+            <div class="flex items-center gap-2 mb-6">
+                <div class="w-1 h-5 bg-amber-400 rounded-sm"></div>
+                <div class="text-amber-400 text-lg">★</div>
+                <h2 class="font-display font-bold text-xl sm:text-2xl text-white tracking-wide">
+                    Best Casinos
+                </h2>
+            </div>
+
+            <!-- Sponsor Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Card 1: Sixty.gg (Primary Sponsor) -->
+                <div class="casino-card rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <!-- Casino Banner Header -->
+                        <div class="banner-sixty h-32 rounded-lg flex flex-col items-center justify-center p-3 mb-4 relative overflow-hidden group">
+                            <!-- Sixty Logo Image -->
+                            <img 
+                                src="watermarked_img_10868399477086026261.jpg" 
+                                alt="Sixty.gg" 
+                                class="h-12 object-contain filter drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]"
+                                onerror="this.onerror=null; this.src='image_5.png';"
+                            >
+                        </div>
+
+                        <!-- Offer Feature List -->
+                        <div class="space-y-2 mb-6 px-1">
+                            <div class="flex items-start gap-2 text-xs font-medium text-slate-200">
+                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
+                                <span>100%-os Befizetési Bónusz $1,000-ig</span>
+                            </div>
+                            
+                            <!-- Copyable Promo Code Feature Line -->
+                            <div 
+                                onclick="copyCode('YNJIMPIX')" 
+                                class="flex items-start gap-2 text-xs font-medium text-slate-200 cursor-pointer hover:text-amber-300 transition-colors group"
+                                title="Kattints a kód másolásához!"
+                            >
+                                <i class="fa-solid fa-check text-slate-400 group-hover:text-amber-400 mt-0.5 shrink-0"></i>
+                                <span>USE CODE: <strong class="text-amber-400 underline decoration-dashed">YNJIMPIX</strong></span>
+                                <i class="fa-regular fa-copy text-[10px] text-slate-400 ml-auto self-center opacity-70 group-hover:opacity-100"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Play Button -->
+                    <a 
+                        href="https://sixty.gg/?ref=ynjimpix" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="w-full py-2.5 px-4 rounded-md bg-cyanButton hover:bg-cyanButtonHover text-slate-950 font-bold text-xs uppercase tracking-wider text-center transition-colors duration-200 shadow-md block"
+                    >
+                        Játék most
+                    </a>
+                </div>
+
+                <!-- Card 2: Placeholder Slot (Matches screenshot style) -->
+                <div class="casino-card rounded-xl p-4 flex flex-col justify-between opacity-80 hover:opacity-100">
+                    <div>
+                        <div class="bg-[#182030] h-32 rounded-lg flex items-center justify-center p-3 mb-4">
+                            <span class="font-bold text-slate-400 text-sm tracking-wider uppercase">Hamarosan...</span>
+                        </div>
+                        <div class="space-y-2 mb-6 px-1">
+                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
+                                <span>Exkluzív Üdvözlő Bónuszok</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-check text-slate-400 mt-0.5 shrink-0"></i>
+                                <span>USE CODE: YNJIMPIX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button disabled class="w-full py-2.5 px-4 rounded-md bg-slate-800 text-slate-500 font-bold text-xs uppercase tracking-wider text-center cursor-not-allowed">
+                        Hamarosan
+                    </button>
+                </div>
+
+                <!-- Card 3: Placeholder Slot -->
+                <div class="casino-card rounded-xl p-4 flex flex-col justify-between opacity-80 hover:opacity-100">
+                    <div>
+                        <div class="bg-[#182030] h-32 rounded-lg flex items-center justify-center p-3 mb-4">
+                            <span class="font-bold text-slate-400 text-sm tracking-wider uppercase">Hamarosan...</span>
+                        </div>
+                        <div class="space-y-2 mb-6 px-1">
+                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-check text-amber-400 mt-0.5 shrink-0"></i>
+                                <span>Kiemelt VIP Rakeback</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-check text-slate-400 mt-0.5 shrink-0"></i>
+                                <span>USE CODE: YNJIMPIX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button disabled class="w-full py-2.5 px-4 rounded-md bg-slate-800 text-slate-500 font-bold text-xs uppercase tracking-wider text-center cursor-not-allowed">
+                        Hamarosan
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Copy Toast Notification -->
+    <div id="toast" class="fixed bottom-6 bg-slate-900 border border-amber-400/50 text-white text-xs px-4 py-2.5 rounded-lg shadow-xl transition-all duration-300 opacity-0 translate-y-6 pointer-events-none flex items-center gap-2 z-50">
+        <i class="fa-solid fa-circle-check text-amber-400"></i>
+        <span>Promóciós kód kimásolva: <strong class="text-amber-400">YNJIMPIX</strong></span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-[11px] text-slate-600">
+        <p>18+ | Felelősségteljes szerencsejáték</p>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        function copyCode(codeText) {
+            const tempInput = document.createElement('input');
+            tempInput.value = codeText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+
+                const toast = document.getElementById('toast');
+                toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+                toast.classList.add('opacity-100', 'translate-y-0');
+
+                setTimeout(() => {
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                    toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+                }, 2200);
+            } catch (err) {
+                console.error('Copy failed:', err);
+            }
+        }
+    </script>
+</body>
+</html>
