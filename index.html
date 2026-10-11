@@ -2,282 +2,467 @@
 <html lang="hu">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#060507">
-  <meta name="description" content="YNJIMPIX hivatalos oldala — közösségi linkek és partnerinformációk.">
-  <title>ynjimpix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0713">
+  <meta name="description" content="YNJIMPIX hivatalos creator oldala — közösségi linkek és partnerinformációk.">
+  <title>YNJIMPIX — Creator Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Playfair+Display:ital,wght@1,900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    :root{
-      color-scheme:dark;
-      --bg:#060507;
-      --ink:#f3ece0;
-      --mute:#8d857a;
-      --gold:#e9b949;
-      --gold-hi:#ffe3a1;
-      --gold-lo:#9a6f1e;
-      --line:rgba(233,185,73,.22);
-      --mint:#19e0b8;
-      --ease:cubic-bezier(.2,.8,.2,1);
+    :root {
+      color-scheme: dark;
+      --bg: #07050d;
+      --panel: rgba(20, 14, 31, 0.75);
+      --panel-border: rgba(182, 107, 255, 0.2);
+      --line: rgba(206, 170, 255, 0.15);
+      --text: #f8f5ff;
+      --muted: #a79bb9;
+      --purple: #b66bff;
+      --purple-2: #8547f5;
+      --pink: #f074ff;
+      --mint: #00d2b3;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,0.6);
     }
-    *{box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%}
-    body{margin:0;min-height:100svh;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    body.locked{overflow:hidden}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
 
-    /* háttér: egyetlen reflektorfény + film-szemcse */
-    .spot{position:fixed;inset:0;pointer-events:none;z-index:0;
-      background:radial-gradient(ellipse 60% 45% at 50% -8%,rgba(233,185,73,.22),transparent 70%),
-                 radial-gradient(ellipse 50% 40% at 50% 115%,rgba(120,70,20,.22),transparent 70%)}
-    .grain{position:fixed;inset:-50%;pointer-events:none;z-index:1;opacity:.09;mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      animation:grain 1.2s steps(6) infinite}
-    @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden; color: var(--text);
+      background-color: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
 
-    .page{position:relative;z-index:2;width:min(100% - 32px,520px);margin:0 auto;padding:clamp(28px,6vh,64px) 0 36px}
+    /* Animated Ambient Background Glows */
+    .bg-glow-1 {
+      position: fixed;
+      top: -15%;
+      left: 15%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(133,71,245,0.22) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(90px);
+      animation: float1 14s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-    /* belépő animáció (csak az első belépéskor) */
-    .in-up{opacity:0;transform:translateY(22px)}
-    body.entered .in-up{animation:up .9s var(--ease) forwards;animation-delay:var(--d,0s)}
-    @keyframes up{to{opacity:1;transform:none}}
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -15%;
+      right: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(240,116,255,0.15) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(100px);
+      animation: float2 18s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-    /* ---------- HERO ---------- */
-    .hero{text-align:center}
-    .seal{position:relative;width:200px;height:200px;margin:0 auto}
-    .seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 40s linear infinite}
-    .seal text{font:700 9.5px "JetBrains Mono",monospace;letter-spacing:.34em;fill:var(--gold);text-transform:uppercase}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .seal .pic{position:absolute;inset:26px;border-radius:50%;overflow:hidden;background:#0c0a0e;display:grid;place-items:center;
-      box-shadow:0 0 0 1px var(--line),0 0 0 6px #0b090c,0 0 0 7px var(--line),0 0 60px rgba(233,185,73,.25);font:900 italic 34px "Playfair Display",serif;color:var(--gold)}
-    .seal .pic img{width:100%;height:100%;object-fit:cover;display:block}
+    @keyframes float1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 40px) scale(1.15); }
+    }
 
-    h1{margin:22px 0 0;font:900 italic clamp(54px,16vw,92px)/.95 "Playfair Display",serif;letter-spacing:-.02em;text-transform:lowercase;
-      background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 45%,var(--gold-lo) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      filter:drop-shadow(0 6px 30px rgba(233,185,73,.25))}
-    .role{margin:14px 0 0;font:500 11px "JetBrains Mono",monospace;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+    @keyframes float2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-40px, -50px) scale(1.2); }
+    }
 
-    .links{display:flex;justify-content:center;gap:10px;margin-top:26px}
-    .link{flex:0 1 170px;display:flex;align-items:center;justify-content:center;gap:10px;height:46px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.02em;
-      position:relative;overflow:hidden;transition:color .3s,border-color .3s,transform .3s var(--ease)}
-    .link::before{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(101%);transition:transform .35s var(--ease);z-index:-1}
-    .link{z-index:0}
-    .link:hover{color:#150f03;border-color:var(--gold);transform:translateY(-2px)}
-    .link:hover::before{transform:none}
+    /* Grid pattern overlay */
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .18;
+      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
 
-    /* ---------- JEGY ---------- */
-    .ticket{position:relative;margin-top:44px;filter:drop-shadow(0 30px 50px rgba(0,0,0,.7))}
-    .tk-top,.tk-stub{background:linear-gradient(160deg,#17120a 0%,#0d0a07 60%,#120d07 100%);border:1px solid var(--line)}
-    .tk-top{border-radius:22px 22px 0 0;border-bottom:0;padding:0;overflow:hidden;position:relative}
-    .tk-brand{position:relative;height:150px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);
-      background:radial-gradient(ellipse at 50% 120%,rgba(160,100,255,.35),transparent 62%),linear-gradient(135deg,#150b22,#0a0710 60%,#1a0b2a)}
-    .tk-brand::after{content:"";position:absolute;top:0;left:-70%;width:35%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent);transform:skewX(-20deg);animation:sweep 6s ease-in-out infinite}
-    @keyframes sweep{0%,60%{left:-70%}100%{left:170%}}
-    .tk-brand img{position:relative;z-index:1;max-width:min(78%,300px);max-height:110px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(170,110,255,.5))}
-    .tk-brand .txt{position:relative;z-index:1;font:800 38px Inter;letter-spacing:-.02em;text-shadow:0 0 30px rgba(170,110,255,.7)}
-    .tk-brand .txt b{color:#c79bff}
-    .tk-body{padding:22px 24px 26px}
-    .tk-meta{display:flex;justify-content:space-between;font:500 10px "JetBrains Mono",monospace;letter-spacing:.22em;color:var(--mute);text-transform:uppercase}
-    .tk-meta i{color:var(--gold);font-style:normal}
-    .tk-body h2{margin:12px 0 6px;font-size:22px;letter-spacing:-.01em}
-    .tk-body p{margin:0;color:var(--mute);font-size:13px;line-height:1.6}
-    .cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;height:52px;border-radius:14px;
-      background:linear-gradient(100deg,var(--mint),#0fb996);color:#03130f;font-weight:800;font-size:14px;letter-spacing:.04em;transition:transform .3s var(--ease),box-shadow .3s;box-shadow:0 10px 30px rgba(25,224,184,.22)}
-    .cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(25,224,184,.4)}
-    .cta i{transition:transform .3s var(--ease)}
-    .cta:hover i{transform:translate(3px,-3px)}
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
 
-    /* perforáció */
-    .perf{position:relative;height:0}
-    .perf::before,.perf::after{content:"";position:absolute;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--line);z-index:3}
-    .perf::before{left:-14px;clip-path:inset(0 0 0 50%)}
-    .perf::after{right:-14px;clip-path:inset(0 50% 0 0)}
-    .perf hr{position:absolute;left:18px;right:18px;top:0;margin:0;border:0;border-top:2px dashed rgba(233,185,73,.3);z-index:2}
+    .shell { width: min(100% - 32px, 760px); margin: 0 auto; padding: 44px 0 24px; position: relative; z-index: 1; }
+    
+    /* Fade-in Animation for main shell */
+    .animated-content {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-    .tk-stub{border-radius:0 0 22px 22px;border-top:0;padding:26px 24px 22px;text-align:center}
-    .tk-stub small{display:block;font:500 10px "JetBrains Mono",monospace;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
-    .code{margin:10px 0 16px;font:700 clamp(30px,9vw,44px) "JetBrains Mono",monospace;letter-spacing:.14em;color:var(--gold-hi);text-shadow:0 0 28px rgba(233,185,73,.4);cursor:pointer;user-select:all;font-variant-numeric:tabular-nums}
-    .copy{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 20px;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold-hi);font-weight:700;font-size:13px;cursor:pointer;transition:background .25s,color .25s,transform .25s var(--ease)}
-    .copy:hover{background:var(--gold);color:#150f03;transform:translateY(-2px)}
-    .copy.ok{background:var(--mint);border-color:var(--mint);color:#03130f}
-    .fine{margin:20px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);color:#7f776c;font-size:11px;line-height:1.7;text-align:left}
-    .fine b{color:var(--gold)}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .foot{margin-top:30px;text-align:center;color:#5f584f;font:500 10px "JetBrains Mono",monospace;letter-spacing:.2em;text-transform:uppercase;line-height:2}
+    .topline { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .brand-mark { display: inline-flex; align-items: center; gap: 9px; color: #e8d7ff; }
+    .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 18px var(--pink); animation: pulse 2s infinite; }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
 
-    .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:50;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:#15110b;font-size:13px;font-weight:600;transition:all .35s var(--ease)}
-    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .top-pill { border: 1px solid var(--line); background: rgba(255,255,255,.035); backdrop-filter: blur(10px); border-radius: 999px; padding: 8px 11px; letter-spacing: .08em; }
 
-    /* ---------- KAPU ---------- */
-    .gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(3,2,4,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
-    .gate.active{opacity:1;visibility:visible}
-    .gate-card{width:100%;max-width:400px;padding:32px 26px 24px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(170deg,#17120a,#0a0807);text-align:center;box-shadow:0 40px 100px #000;transform:translateY(18px) scale(.97);opacity:0;transition:transform .5s var(--ease),opacity .35s}
-    .gate.active .gate-card{transform:none;opacity:1}
-    .gate-badge{width:58px;height:58px;margin:0 auto 16px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;color:var(--gold-hi)}
-    .gate-card h2{margin:0 0 4px;font-size:21px}
-    .gate-card p{margin:0 0 20px;color:var(--mute);font-size:12px}
-    .opt{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:13px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;text-align:left;font-size:13.5px;font-weight:500;color:#ddd4c6;cursor:pointer;user-select:none;transition:border-color .2s,background .2s}
-    .opt:has(input:checked){border-color:var(--gold);background:rgba(233,185,73,.07)}
-    .opt input{appearance:none;-webkit-appearance:none;margin:0;flex:none;width:20px;height:20px;border:1.5px solid rgba(233,185,73,.55);border-radius:6px;display:grid;place-items:center;cursor:pointer;transition:all .2s}
-    .opt input:checked{background:var(--gold);border-color:var(--gold)}
-    .opt input:checked::before{content:"\f00c";font:900 11px "Font Awesome 6 Free";color:#150f03}
-    .opt input:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
-    .go{width:100%;height:50px;margin-top:12px;border:0;border-radius:13px;background:#37332d;color:#8b857b;font-weight:800;font-size:14px;cursor:not-allowed;transition:all .3s var(--ease)}
-    .go.on{background:linear-gradient(100deg,var(--mint),#0fb996);color:#03130f;cursor:pointer;box-shadow:0 10px 26px rgba(25,224,184,.3)}
-    .go.on:hover{transform:translateY(-2px)}
-    .no{width:100%;height:44px;margin-top:8px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:transparent;color:#80796f;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s}
-    .no:hover{color:#fff;background:rgba(255,255,255,.06)}
-    .shake{animation:shake .4s}
-    @keyframes shake{25%,75%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
+    /* Profile Card */
+    .profile {
+      text-align: center; padding: 32px 22px 28px;
+      border: 1px solid var(--panel-border);
+      border-radius: 28px;
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .profile:hover { border-color: rgba(182, 107, 255, 0.4); }
 
-    @media (max-width:420px){.links{flex-direction:column}.link{flex-basis:auto}}
-    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.001ms!important}.in-up{opacity:1;transform:none}}
+    .avatar-wrap {
+      position: relative; width: 96px; height: 96px; margin: 0 auto 17px auto; padding: 3px;
+      border-radius: 50%; background: linear-gradient(135deg, var(--pink), var(--purple-2), var(--mint));
+      box-shadow: 0 0 30px rgba(182,107,255,.3);
+      transition: transform 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .profile:hover .avatar-wrap { transform: scale(1.05); }
+
+    .avatar { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #171020; color: #ead7ff; font-weight: 900; font-size: 28px; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    h1 { margin: 0; font-size: clamp(30px, 7vw, 42px); font-weight: 900; letter-spacing: .08em; line-height: 1.1; }
+    .handle-sub { margin: 10px 0 0; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .18em; }
+    .bio { margin: 14px auto 0; max-width: 420px; color: #d2c6e0; font-size: 14px; line-height: 1.65; }
+
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .social-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 0 18px; border-radius: 12px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.04); backdrop-filter: blur(8px);
+      color: #f4edff; font-size: 13px; font-weight: 700; transition: all .25s ease;
+    }
+    .social-btn:hover { transform: translateY(-3px); background: rgba(182,107,255,.15); border-color: rgba(182,107,255,.5); box-shadow: 0 8px 25px rgba(133,71,245,.25); }
+    .social-btn .fa-twitch { color: #a970ff; } .social-btn .fa-discord { color: #5865f2; }
+
+    .section-heading { display: flex; align-items: center; gap: 12px; margin: 36px 2px 16px; }
+    .heading-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #dfb9ff; background: rgba(182,107,255,.12); border: 1px solid rgba(182,107,255,.2); }
+    .section-heading h2 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    .section-heading p { margin: 3px 0 0; font-size: 12px; color: var(--muted); }
+
+    /* Partner Card */
+    .partner-card {
+      overflow: hidden; border: 1px solid var(--panel-border); border-radius: var(--radius);
+      background: var(--panel); backdrop-filter: blur(16px); box-shadow: var(--shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .partner-card:hover { transform: translateY(-4px); border-color: rgba(182,107,255,.45); box-shadow: 0 30px 80px rgba(133,71,245,.18); }
+
+    .partner-banner { min-height: 155px; display: grid; place-items: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 50% 120%, rgba(182,107,255,.35), transparent 60%), linear-gradient(135deg, #1b0d2a, #0c0814 60%, #1f0b30); }
+    .partner-logo { z-index: 1; text-align: center; font-size: clamp(28px, 6vw, 40px); font-weight: 900; letter-spacing: .12em; text-shadow: 0 0 30px rgba(182,107,255,.6); }
+    .partner-logo small { display: block; margin-top: 7px; color: #bda8d4; font-size: 9px; letter-spacing: .3em; font-weight: 800; }
+
+    .partner-content { padding: 24px; }
+    .partner-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .partner-title-row h3 { margin: 0; font-size: 19px; }
+    .partner-title-row p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .partner-tag { flex-shrink: 0; border: 1px solid rgba(182,107,255,.3); border-radius: 999px; padding: 6px 10px; color: #d8b7ff; background: rgba(182,107,255,.1); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+
+    .promo-box { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 16px; padding: 14px 16px; border: 1px solid rgba(206,170,255,.15); border-radius: 14px; background: rgba(5,4,10,.5); }
+    .promo-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .promo-code { font-size: 16px; font-weight: 900; letter-spacing: .14em; color: #ffffff; }
+
+    .copy-btn { flex-shrink: 0; border: 1px solid rgba(182,107,255,.35); border-radius: 10px; padding: 9px 14px; color: #f3e7ff; background: rgba(182,107,255,.15); cursor: pointer; font-size: 12px; font-weight: 800; transition: all .2s ease; }
+    .copy-btn:hover { background: rgba(182,107,255,.3); transform: scale(1.02); }
+
+    .partner-link {
+      display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 50px; border: 0; border-radius: 14px;
+      background: linear-gradient(100deg, var(--mint), #00b398); color: #051412; font-size: 14px; font-weight: 900; letter-spacing: .04em;
+      box-shadow: 0 8px 25px rgba(0,210,179,.25); transition: all .25s ease;
+    }
+    .partner-link:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,210,179,.4); }
+
+    .disclaimer { display: flex; gap: 10px; margin-top: 16px; padding: 13px 14px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; color: #b9adca; background: rgba(255,255,255,.02); font-size: 11px; line-height: 1.6; }
+    .disclaimer i { margin-top: 2px; color: #d7b0ff; }
+
+    .footer { padding: 32px 0 12px; text-align: center; color: #8e829e; font-size: 11px; line-height: 1.8; position: relative; z-index: 1; }
+    .footer strong { color: #cbb5e2; }
+
+    /* Toast notification */
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 100; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; padding: 12px 20px; border: 1px solid rgba(182,107,255,.4); border-radius: 12px; color: #f8f2ff; background: #1a1026; box-shadow: var(--shadow); font-size: 13px; font-weight: 700; transition: all .25s ease; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* =========================================
+       18+ / LOCATION ACCESS VERIFICATION MODAL
+       ========================================= */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(4, 3, 8, 0.88);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+    .modal-card {
+      width: 100%; max-width: 420px;
+      background: #0f0d1a; border: 1px solid rgba(182, 107, 255, 0.25);
+      border-radius: 24px; padding: 32px 28px; text-align: center;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+      transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .modal-card { transform: scale(1); }
+
+    .badge-18 {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 2px solid #ffffff; display: grid; place-items: center;
+      margin: 0 auto 16px; font-weight: 900; font-size: 15px; color: #ffffff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+    }
+
+    .modal-card h2 { margin: 0 0 20px; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; color: #ffffff; }
+
+    .verify-options { text-align: left; margin-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .checkbox-label {
+      display: flex; align-items: center; gap: 12px; font-size: 13.5px; font-weight: 600; color: #d0c5e0; cursor: pointer; user-select: none;
+    }
+    .checkbox-label input[type="checkbox"] {
+      appearance: none; width: 18px; height: 18px; border: 1px solid rgba(206,170,255,0.4); border-radius: 4px; background: rgba(255,255,255,0.05);
+      display: grid; place-items: center; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
+    }
+    .checkbox-label input[type="checkbox"]:checked {
+      background: var(--purple); border-color: var(--purple);
+    }
+    .checkbox-label input[type="checkbox"]:checked::before {
+      content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 11px; color: #fff;
+    }
+
+    .btn-confirm {
+      width: 100%; min-height: 46px; border: 0; border-radius: 12px;
+      background: #4a4759; color: #a19dae; font-size: 13.5px; font-weight: 800;
+      cursor: not-allowed; transition: all 0.25s ease; margin-bottom: 10px;
+    }
+    .btn-confirm.enabled {
+      background: linear-gradient(100deg, var(--mint), #00b398); color: #051412; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,210,179,0.3);
+    }
+    .btn-confirm.enabled:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .btn-exit {
+      width: 100%; min-height: 44px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+      background: rgba(255,255,255,0.03); color: #8e829e; font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .btn-exit:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 22px, 760px); padding-top: 23px; }
+      .topline { margin-bottom: 18px; font-size: 9px; }
+      .profile { padding: 25px 15px 22px; border-radius: 22px; }
+      .social-btn { flex: 1; }
+      .partner-content { padding: 18px 16px; }
+      .partner-banner { min-height: 130px; }
+      .partner-title-row { flex-wrap: wrap; }
+      .promo-box { padding: 12px; }
+      .modal-card { padding: 26px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
-<body class="locked">
-  <div class="spot" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+<body>
 
-  <main class="page" id="app">
-    <header class="hero">
-      <div class="seal in-up" style="--d:.05s">
-        <svg viewBox="0 0 200 200" aria-hidden="true">
-          <defs><path id="ring" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs>
-          <text><textPath href="#ring">18+ · játssz felelősen · 18+ · játssz felelősen · 18+ · játssz felelősen · </textPath></text>
-        </svg>
-        <div class="pic" id="pic">
-          <img src="avatar.png" alt="YNJIMPIX" onerror="this.remove();document.getElementById('pic').textContent='yn'">
+  <!-- Ambient Glow Background Elemek -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- MAIN CONTENT SHELL -->
+  <main class="shell animated-content">
+    <div class="topline">
+      <a class="brand-mark" href="#" aria-label="YNJIMPIX kezdőlap"><span class="brand-dot"></span> CREATOR HUB</a>
+      <span class="top-pill">Official links</span>
+    </div>
+
+    <!-- PROFILE HEADER -->
+    <header class="profile">
+      <div class="avatar-wrap">
+        <div class="avatar" id="avatarFallback" aria-label="YNJIMPIX profilkép">
+          <img src="avatar.png" alt="YNJIMPIX profilképe" onerror="this.remove(); document.getElementById('avatarFallback').textContent='YN';">
         </div>
       </div>
-      <h1 class="in-up" style="--d:.15s">ynjimpix</h1>
-      <p class="role in-up" style="--d:.25s">streamer · content creator</p>
-      <nav class="links in-up" style="--d:.35s" aria-label="Közösségi linkek">
-        <a class="link" href="https://www.twitch.tv/ynjimpix" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitch"></i> Twitch</a>
-        <a class="link" href="https://discord.gg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Discord</a>
+      <h1>YNJIMPIX</h1>
+      <p class="handle-sub">CONTENT CREATOR <span aria-hidden="true">/</span> STREAMER</p>
+      <p class="bio">Minden fontos linkem egy helyen. Csatlakozz a közösséghez, és kövess a platformjaimon.</p>
+      <nav class="socials" aria-label="Közösségi linkek">
+        <a class="social-btn" href="https://www.twitch.tv/ynjimpix" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitch" aria-hidden="true"></i> Twitch <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;opacity:.55" aria-hidden="true"></i></a>
+        <a class="social-btn" href="https://discord.gg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;opacity:.55" aria-hidden="true"></i></a>
       </nav>
     </header>
 
-    <section class="ticket in-up" style="--d:.5s" aria-label="Sixty.gg partnerinformáció">
-      <div class="tk-top">
-        <div class="tk-brand">
-          <img src="sixty.png" alt="Sixty.GG" onerror="this.remove();document.getElementById('sixtyTxt').hidden=false">
-          <div class="txt" id="sixtyTxt" hidden>Sixty<b>.GG</b></div>
-        </div>
-        <div class="tk-body">
-          <div class="tk-meta"><span>Partner</span><i>● Hivatalos</i></div>
-          <h2>Sixty.gg</h2>
-          <p>Az aktuális feltételeket mindig a szolgáltató oldalán ellenőrizd.</p>
-          <a class="cta" href="https://sixty.gg/?ref=ynjimpix" target="_blank" rel="noopener noreferrer">Partneroldal megnyitása <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <!-- PARTNER SECTION -->
+    <section aria-labelledby="partners-heading">
+      <div class="section-heading">
+        <div class="heading-icon"><i class="fa-solid fa-sparkles" aria-hidden="true"></i></div>
+        <div>
+          <h2 id="partners-heading">Partnerinformációk</h2>
+          <p>Promóciós kód és hivatalos partnerlink</p>
         </div>
       </div>
-      <div class="perf" aria-hidden="true"><hr></div>
-      <div class="tk-stub">
-        <small>Promóciós kód</small>
-        <div class="code" id="code" data-code="YNJIMPIX" title="Kattints a másoláshoz">YNJIMPIX</div>
-        <button class="copy" id="copy" type="button"><i class="fa-regular fa-copy"></i><span id="copyTxt">Kód másolása</span></button>
-        <p class="fine"><b>18+ kizárólag.</b> A szerencsejáték pénzügyi kockázattal jár, és veszteséghez vezethet. Csak a helyi jogszabályoknak megfelelően, nagykorúként tájékozódj. A feltételek változhatnak, nyereményt nem garantálunk.</p>
-      </div>
+
+      <article class="partner-card">
+        <div class="partner-banner" role="img" aria-label="Sixty.gg partnerbanner">
+          <div class="partner-logo">SIXTY.GG<small>PARTNER LINK</small></div>
+        </div>
+        <div class="partner-content">
+          <div class="partner-title-row">
+            <div>
+              <h3>Sixty.gg</h3>
+              <p>Partneroldal — az aktuális feltételeket a szolgáltató oldalán ellenőrizd.</p>
+            </div>
+            <span class="partner-tag">Partner</span>
+          </div>
+
+          <div class="promo-box">
+            <div>
+              <span class="promo-label">Promóciós kód</span>
+              <span class="promo-code" id="promoCode">YNJIMPIX</span>
+            </div>
+            <button class="copy-btn" type="button" id="copyButton"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span id="copyLabel">Kód másolása</span></button>
+          </div>
+
+          <a class="partner-link" href="https://sixty.gg/?ref=ynjimpix" target="_blank" rel="noopener noreferrer">
+            Partneroldal megnyitása <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+
+          <div class="disclaimer">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <span><strong>18+ kizárólag.</strong> A szerencsejáték pénzügyi kockázattal járhat, és veszteséghez vezethet. Csak a helyi jogszabályoknak megfelelően, nagykorúként tájékozódj. A bónuszok és feltételek változhatnak; ellenőrizd őket a szolgáltatónál. Ez az oldal nem garantál nyereményt.</span>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <footer class="foot in-up" style="--d:.7s">© <span id="y"></span> ynjimpix<br>18+ · játssz felelősen</footer>
+    <footer class="footer">
+      <div><strong>YNJIMPIX</strong> · Creator Hub</div>
+      <div>© <span id="year"></span> · Minden jog fenntartva</div>
+      <div>18+ · Felelősségteljes tájékozódás</div>
+    </footer>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- 18+ kapu: alapból aktív, és minden visszatéréskor újra kiugrik -->
-  <div class="gate active" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
-    <div class="gate-card" id="gcard">
-      <div class="gate-badge">18+</div>
-      <h2 id="gt">Access Verification</h2>
-      <p>This check appears every time you come back to the page.</p>
-      <label class="opt"><input type="checkbox" id="c1"><span>I confirm I am 18 or older.</span></label>
-      <label class="opt"><input type="checkbox" id="c2"><span>I am outside Hungary.</span></label>
-      <button class="go" id="go" type="button" disabled>Confirm, Enter</button>
-      <button class="no" id="no" type="button">No, take me away!</button>
+  <!-- 18+ / LOCATION ACCESS VERIFICATION MODAL -->
+  <div class="modal-overlay" id="verifyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="badge-18">18+</div>
+      <h2 id="modalTitle">Access Verification</h2>
+      
+      <div class="verify-options">
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkAge">
+          <span>I confirm I am 18 or older.</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkLoc">
+          <span>I am outside Hungary.</span>
+        </label>
+      </div>
+
+      <button class="btn-confirm" id="btnConfirm" disabled>Confirm, Enter</button>
+      <button class="btn-exit" id="btnExit">No, take me away!</button>
     </div>
   </div>
 
   <script>
-  (() => {
-    const $ = id => document.getElementById(id);
-    const app = $('app'), gate = $('gate'), gcard = $('gcard'), c1 = $('c1'), c2 = $('c2'), go = $('go');
-    const code = $('code'), copy = $('copy'), copyTxt = $('copyTxt'), toast = $('toast');
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let ignoreBlurUntil = 0, toastT, firstEnter = true;
-    $('y').textContent = new Date().getFullYear();
+    (() => {
+      // Elements
+      const codeElement = document.getElementById('promoCode');
+      const copyButton = document.getElementById('copyButton');
+      const copyLabel = document.getElementById('copyLabel');
+      const toast = document.getElementById('toast');
+      const year = document.getElementById('year');
+      
+      // Modal Elements
+      const verifyModal = document.getElementById('verifyModal');
+      const chkAge = document.getElementById('chkAge');
+      const chkLoc = document.getElementById('chkLoc');
+      const btnConfirm = document.getElementById('btnConfirm');
+      const btnExit = document.getElementById('btnExit');
 
-    /* kód "pörgetés" – minden belépéskor és másoláskor lefut */
-    const GLYPHS = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
-    function reel(){
-      const target = code.dataset.code;
-      if (reduce) { code.textContent = target; return; }
-      let frame = 0;
-      const total = 26;
-      const id = setInterval(() => {
-        frame++;
-        const settled = Math.floor((frame / total) * target.length);
-        code.textContent = target.split('').map((ch, i) => i < settled ? ch : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]).join('');
-        if (frame >= total) { clearInterval(id); code.textContent = target; }
-      }, 38);
-    }
+      let toastTimer;
+      year.textContent = new Date().getFullYear();
 
-    /* kapu */
-    function sync(){ const ok = c1.checked && c2.checked; go.disabled = !ok; go.classList.toggle('on', ok); }
-    function lock(){
-      c1.checked = false; c2.checked = false; sync();
-      gate.classList.add('active'); app.inert = true; document.body.classList.add('locked');
-      toast.classList.remove('show');
-      if (!document.hidden) setTimeout(() => c1.focus({preventScroll:true}), 80);
-    }
-    function unlock(){
-      gate.classList.remove('active'); app.inert = false; document.body.classList.remove('locked');
-      if (firstEnter) { firstEnter = false; document.body.classList.add('entered'); }
-      setTimeout(reel, 450);
-    }
-    c1.addEventListener('change', sync); c2.addEventListener('change', sync);
-    go.addEventListener('click', () => {
-      if (c1.checked && c2.checked) unlock();
-      else { gcard.classList.remove('shake'); void gcard.offsetWidth; gcard.classList.add('shake'); }
-    });
-    $('no').addEventListener('click', () => { location.href = 'https://www.google.com'; });
+      // Check Verification State in Session Storage
+      if (!sessionStorage.getItem('ynj_verified')) {
+        verifyModal.classList.add('active');
+      }
 
-    // elhagyás / visszatérés
-    document.addEventListener('visibilitychange', () => { if (document.hidden) lock(); });
-    window.addEventListener('blur', () => { if (Date.now() > ignoreBlurUntil) lock(); });
-    window.addEventListener('pagehide', lock);
-    window.addEventListener('pageshow', lock);
-    gate.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { e.preventDefault(); return; }
-      if (e.key !== 'Tab') return;
-      const f = [...gate.querySelectorAll('input,button:not([disabled])')], a = f[0], z = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
-      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
-    });
-
-    /* másolás */
-    function showToast(m){ toast.textContent = m; toast.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('show'), 2400); }
-    async function doCopy(){
-      const t = code.dataset.code;
-      ignoreBlurUntil = Date.now() + 1500;
-      try {
-        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(t);
-        else {
-          const f = document.createElement('textarea'); f.value = t; f.readOnly = true; f.style.cssText = 'position:fixed;opacity:0';
-          document.body.appendChild(f); f.select(); const ok = document.execCommand('copy'); f.remove(); if (!ok) throw 0;
+      function checkForm() {
+        if (chkAge.checked && chkLoc.checked) {
+          btnConfirm.removeAttribute('disabled');
+          btnConfirm.classList.add('enabled');
+        } else {
+          btnConfirm.setAttribute('disabled', 'true');
+          btnConfirm.classList.remove('enabled');
         }
-        copyTxt.textContent = 'Kimásolva!'; copy.classList.add('ok'); showToast('Kód kimásolva: ' + t); reel();
-      } catch { showToast('Nem sikerült, jelöld ki és másold ki a kódot.'); }
-      setTimeout(() => { copyTxt.textContent = 'Kód másolása'; copy.classList.remove('ok'); }, 2200);
-    }
-    copy.addEventListener('click', doCopy);
-    code.addEventListener('click', doCopy);
+      }
 
-    lock();
-  })();
+      chkAge.addEventListener('change', checkForm);
+      chkLoc.addEventListener('change', checkForm);
+
+      btnConfirm.addEventListener('click', () => {
+        if (chkAge.checked && chkLoc.checked) {
+          sessionStorage.setItem('ynj_verified', 'true');
+          verifyModal.classList.remove('active');
+        }
+      });
+
+      btnExit.addEventListener('click', () => {
+        window.location.href = 'https://www.google.com';
+      });
+
+      // Toast Notification
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+
+      // Copy Functionality
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const field = document.createElement('textarea');
+        field.value = text;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        const success = document.execCommand('copy');
+        field.remove();
+        if (!success) throw new Error('A másolás nem sikerült.');
+      }
+
+      copyButton.addEventListener('click', async () => {
+        const code = codeElement.textContent.trim();
+        try {
+          await copyText(code);
+          copyLabel.textContent = 'Kimásolva!';
+          showToast('Promóciós kód kimásolva: ' + code);
+        } catch (error) {
+          showToast('A másolás nem sikerült. Jelöld ki és másold ki a kódot.');
+        }
+        window.setTimeout(() => { copyLabel.textContent = 'Kód másolása'; }, 2200);
+      });
+    })();
   </script>
 </body>
 </html>
