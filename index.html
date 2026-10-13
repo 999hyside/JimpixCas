@@ -25,6 +25,8 @@
       --purple-2: #7c3aed;
       --pink: #f074ff;
       --mint: #00e0bd;
+      --gold: #ffc83d;
+      --gold-2: #f59e0b;
       --radius: 24px;
       --shadow: 0 30px 80px rgba(0,0,0,.65);
       --ease: cubic-bezier(.16, 1, .3, 1);
@@ -96,18 +98,18 @@
     .profile { text-align: center; padding: 38px 24px 30px; overflow: hidden; }
     .profile::after { content: ""; position: absolute; left: 50%; top: -120px; width: 380px; height: 260px; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(182,107,255,.28), transparent 70%); pointer-events: none; }
 
-    .avatar-wrap { position: relative; width: 112px; height: 112px; margin: 0 auto 20px; }
-    .avatar-wrap::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from var(--angle), var(--pink), var(--purple-2), var(--mint), var(--pink)); animation: spin 5s linear infinite; filter: blur(.3px); }
-    .avatar-wrap::after { content: ""; position: absolute; inset: -16px; border-radius: 50%; background: radial-gradient(circle, rgba(182,107,255,.5), transparent 68%); filter: blur(14px); z-index: -1; animation: breathe 4s ease-in-out infinite; }
+    .avatar-wrap { position: relative; width: 136px; height: 136px; margin: 0 auto 22px; }
+    .avatar-wrap::before { content: ""; position: absolute; inset: -4px; border-radius: 50%; background: conic-gradient(from var(--angle), var(--gold), var(--pink), var(--purple-2), var(--gold-2), var(--gold)); animation: spin 5s linear infinite; filter: blur(.3px); }
+    .avatar-wrap::after { content: ""; position: absolute; inset: -16px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,61,.38), rgba(182,107,255,.3) 55%, transparent 70%); filter: blur(16px); z-index: -1; animation: breathe 4s ease-in-out infinite; }
     @keyframes breathe { 50% { transform: scale(1.12); opacity: .6; } }
-    .avatar { position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #150e22; border: 4px solid #0d0817; color: #ead7ff; font-weight: 900; font-size: 32px; letter-spacing: .04em; }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .live-badge { position: absolute; right: -2px; bottom: 6px; z-index: 2; width: 22px; height: 22px; border-radius: 50%; background: #0d0817; display: grid; place-items: center; }
+    .avatar { position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #000; border: 3px solid #0a0610; color: #ffd978; font-weight: 900; font-size: 34px; letter-spacing: .04em; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.1); }
+    .live-badge { position: absolute; right: 2px; bottom: 8px; z-index: 2; width: 22px; height: 22px; border-radius: 50%; background: #0d0817; display: grid; place-items: center; }
     .live-badge::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 12px var(--mint); }
 
     h1 {
       margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: clamp(34px, 9vw, 56px); font-weight: 700; letter-spacing: .1em; line-height: 1.05;
-      background: linear-gradient(100deg, #fff 20%, #e4c6ff 45%, var(--pink) 60%, #fff 80%); background-size: 220% 100%;
+      background: linear-gradient(100deg, #fff 15%, #ffe39a 35%, var(--gold) 50%, var(--pink) 68%, #fff 85%); background-size: 240% 100%;
       -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 6s linear infinite;
     }
     @keyframes sheen { to { background-position: -220% 0; } }
@@ -179,6 +181,54 @@
     .footer { position: relative; z-index: 1; padding: 34px 0 14px; text-align: center; color: #8e829e; font-size: 11.5px; line-height: 1.9; }
     .footer strong { color: #d3bdea; letter-spacing: .06em; }
 
+
+    /* ---------- Ticker ---------- */
+    .ticker { position: relative; overflow: hidden; margin: 22px 0 0; padding: 12px 0; border-radius: 16px; border: 1px solid rgba(255,200,61,.22); background: linear-gradient(90deg, rgba(255,200,61,.08), rgba(182,107,255,.08), rgba(255,200,61,.08)); backdrop-filter: blur(12px); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .ticker-track { display: flex; gap: 38px; width: max-content; animation: marquee 32s linear infinite; font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #e9d9ff; white-space: nowrap; }
+    .ticker-track span { display: inline-flex; align-items: center; gap: 38px; }
+    .ticker-track span::after { content: "✦"; color: var(--gold); }
+    .ticker-track b { color: var(--gold); font-weight: 800; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Hamarosan kártya ---------- */
+    .soon-card { overflow: hidden; border-radius: var(--radius); }
+    .soon-card::before { background: conic-gradient(from var(--angle), transparent 0 55%, rgba(255,200,61,.95) 75%, rgba(240,116,255,.8) 90%, transparent 100%), linear-gradient(rgba(255,200,61,.22), rgba(255,200,61,.22)); }
+    .soon-inner { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: center; padding: 26px; }
+    .soon-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 0% 0%, rgba(255,200,61,.14), transparent 55%), radial-gradient(ellipse at 100% 100%, rgba(240,116,255,.12), transparent 55%); pointer-events: none; }
+    .soon-vault { position: relative; aspect-ratio: 1; border-radius: 26px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg, #1a1226, #0a0710); border: 1px solid rgba(255,200,61,.3); box-shadow: inset 0 0 40px rgba(255,200,61,.1), 0 20px 50px rgba(0,0,0,.5); }
+    .soon-vault::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from var(--angle), transparent, rgba(255,200,61,.3), transparent 25%, rgba(240,116,255,.22), transparent 55%); animation: spin 6s linear infinite; }
+    .soon-vault::after { content: ""; position: absolute; inset: 2px; border-radius: 24px; background: linear-gradient(145deg, #150e20, #09060e); }
+    .soon-vault .q { position: relative; z-index: 1; font-family: "Space Grotesk", Inter, sans-serif; font-size: 58px; font-weight: 700; line-height: 1; background: linear-gradient(180deg, #ffe9a8, var(--gold-2)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 18px rgba(255,200,61,.55)); animation: floaty 3.2s ease-in-out infinite; }
+    .soon-vault .lock { position: absolute; z-index: 1; right: 10px; bottom: 10px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: rgba(255,200,61,.14); border: 1px solid rgba(255,200,61,.35); color: var(--gold); font-size: 12px; }
+    @keyframes floaty { 50% { transform: translateY(-6px) scale(1.04); } }
+    .soon-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; color: #1a1000; background: linear-gradient(100deg, #ffe08a, var(--gold-2)); box-shadow: 0 6px 22px rgba(255,200,61,.3); }
+    .soon-badge i { font-size: 10px; animation: ping2 1.6s ease-in-out infinite; }
+    @keyframes ping2 { 50% { transform: scale(1.35) rotate(15deg); } }
+    .soon-body { position: relative; }
+    .soon-body h3 { margin: 12px 0 8px; font-family: "Space Grotesk", Inter, sans-serif; font-size: 25px; letter-spacing: .02em; }
+    .soon-body p { margin: 0; color: #cdbfe0; font-size: 13.5px; line-height: 1.65; }
+    .soon-progress { position: relative; height: 6px; margin: 18px 0 16px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; }
+    .soon-progress::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 38%; border-radius: inherit; background: linear-gradient(90deg, var(--gold-2), var(--gold), var(--pink)); animation: load 2.8s var(--ease) infinite alternate; box-shadow: 0 0 16px rgba(255,200,61,.6); }
+    @keyframes load { from { left: 0; width: 22%; } to { left: 62%; width: 38%; } }
+    .soon-meta { display: flex; justify-content: space-between; margin: -8px 0 16px; color: var(--muted); font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .soon-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn-gold, .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 18px; border-radius: 14px; font-size: 13px; font-weight: 800; transition: transform .3s var(--ease), box-shadow .3s, background .3s; }
+    .btn-gold { color: #1a1000; background: linear-gradient(100deg, #ffe08a, var(--gold-2)); box-shadow: 0 10px 28px rgba(255,200,61,.28); }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(255,200,61,.45); }
+    .btn-ghost { color: #f1e6ff; border: 1px solid var(--line); background: rgba(255,255,255,.04); }
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(182,107,255,.16); border-color: rgba(182,107,255,.5); }
+
+    /* ---------- GYIK ---------- */
+    .faq { display: grid; gap: 10px; }
+    .faq details { border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.03); backdrop-filter: blur(14px); transition: border-color .3s, background .3s; }
+    .faq details[open] { border-color: rgba(255,200,61,.35); background: rgba(255,200,61,.04); }
+    .faq summary { display: flex; align-items: center; gap: 12px; padding: 16px 18px; cursor: pointer; list-style: none; font-size: 14px; font-weight: 700; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary i.lead { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; flex-shrink: 0; font-size: 12px; color: var(--gold); background: rgba(255,200,61,.1); border: 1px solid rgba(255,200,61,.22); }
+    .faq summary .chev { margin-left: auto; color: var(--muted); font-size: 12px; transition: transform .35s var(--ease); }
+    .faq details[open] .chev { transform: rotate(180deg); color: var(--gold); }
+    .faq details p { margin: 0; padding: 0 18px 18px 60px; color: #c4b7d6; font-size: 13px; line-height: 1.7; }
+
     /* ---------- Toast ---------- */
     .toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 100; display: flex; align-items: center; gap: 10px; transform: translate(-50%, 24px); opacity: 0; pointer-events: none; padding: 13px 20px; border: 1px solid rgba(0,224,189,.4); border-radius: 14px; color: #f8f2ff; background: rgba(20,12,32,.92); backdrop-filter: blur(14px); box-shadow: var(--shadow); font-size: 13px; font-weight: 700; transition: all .4s var(--ease); max-width: calc(100% - 32px); }
     .toast i { color: var(--mint); }
@@ -211,6 +261,11 @@
       .topline { margin-bottom: 16px; font-size: 9.5px; }
       .profile { padding: 30px 16px 22px; border-radius: 24px; }
       .links { grid-template-columns: 1fr; }
+      .soon-inner { grid-template-columns: 1fr; padding: 20px 16px; text-align: center; }
+      .soon-vault { max-width: 130px; margin: 0 auto; }
+      .soon-actions { justify-content: center; }
+      .btn-gold, .btn-ghost { flex: 1 1 100%; }
+      .faq details p { padding-left: 18px; }
       .partner-content { padding: 20px 16px; }
       .partner-banner { min-height: 140px; }
       .partner-title-row { flex-wrap: wrap; }
@@ -261,8 +316,15 @@
       </nav>
     </header>
 
+    <div class="ticker reveal" style="--i:2" aria-label="Hírek">
+      <div class="ticker-track" aria-hidden="true">
+        <span><b>Hamarosan</b> új casino partner</span><span>Kövesd a Twitch csatornát</span><span>Csatlakozz a Discord közösséghez</span><span>Exkluzív promóciós kód</span><span>18+ · Felelősen</span>
+        <span><b>Hamarosan</b> új casino partner</span><span>Kövesd a Twitch csatornát</span><span>Csatlakozz a Discord közösséghez</span><span>Exkluzív promóciós kód</span><span>18+ · Felelősen</span>
+      </div>
+    </div>
+
     <section aria-labelledby="partners-heading">
-      <div class="section-heading reveal" style="--i:2">
+      <div class="section-heading reveal" style="--i:3">
         <div class="heading-icon"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></div>
         <div>
           <h2 id="partners-heading">Partnerinformációk</h2>
@@ -270,7 +332,7 @@
         </div>
       </div>
 
-      <article class="partner-card glass reveal" style="--i:3" id="tiltCard">
+      <article class="partner-card glass reveal" style="--i:4" id="tiltCard">
         <div class="partner-banner" role="img" aria-label="Sixty.gg partnerbanner">
           <div class="partner-logo">SIXTY.GG<small>PARTNER LINK</small></div>
         </div>
@@ -303,7 +365,58 @@
       </article>
     </section>
 
-    <footer class="footer reveal" style="--i:4">
+    <section aria-labelledby="soon-heading">
+      <div class="section-heading reveal" style="--i:5">
+        <div class="heading-icon" style="color:#ffd978;border-color:rgba(255,200,61,.3);background:linear-gradient(135deg,rgba(255,200,61,.22),rgba(255,200,61,.05))"><i class="fa-solid fa-crown" aria-hidden="true"></i></div>
+        <div>
+          <h2 id="soon-heading">Hamarosan</h2>
+          <p>Készülőben lévő új partnerség</p>
+        </div>
+      </div>
+
+      <article class="soon-card glass reveal" style="--i:5">
+        <div class="soon-inner">
+          <div class="soon-vault" aria-hidden="true"><span class="q">?</span><span class="lock"><i class="fa-solid fa-lock"></i></span></div>
+          <div class="soon-body">
+            <span class="soon-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Coming soon</span>
+            <h3>Új casino partner</h3>
+            <p>Hamarosan újabb partner érkezik saját promóciós kóddal. Kövess Twitchen, vagy lépj be a Discordra, hogy elsőként értesülj, amint kiderül.</p>
+            <div class="soon-progress" role="progressbar" aria-label="Előkészületben" aria-valuetext="Előkészületben"></div>
+            <div class="soon-meta"><span>Előkészületben</span><span>Hamarosan élesben</span></div>
+            <div class="soon-actions">
+              <a class="btn-gold" href="https://discord.gg" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bell" aria-hidden="true"></i> Értesítést kérek</a>
+              <a class="btn-ghost" href="https://www.twitch.tv/ynjimpix" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitch" aria-hidden="true"></i> Követés Twitchen</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <div class="section-heading reveal" style="--i:6">
+        <div class="heading-icon"><i class="fa-solid fa-circle-question" aria-hidden="true"></i></div>
+        <div>
+          <h2 id="faq-heading">Gyakori kérdések</h2>
+          <p>Röviden a lényeg</p>
+        </div>
+      </div>
+      <div class="faq reveal" style="--i:6">
+        <details>
+          <summary><i class="lead fa-solid fa-ticket" aria-hidden="true"></i> Mi az a promóciós kód? <i class="chev fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+          <p>A kód a partnerrel közös ajánlás azonosítója. Az aktuális feltételeket és kedvezményeket mindig a szolgáltató saját oldalán ellenőrizd, mert változhatnak.</p>
+        </details>
+        <details>
+          <summary><i class="lead fa-solid fa-hourglass-half" aria-hidden="true"></i> Mikor jön az új partner? <i class="chev fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+          <p>Pontos dátum még nincs. A bejelentést először a Discordon és a Twitch csatornán teszem közzé, itt pedig azonnal megjelenik az új kártya.</p>
+        </details>
+        <details>
+          <summary><i class="lead fa-solid fa-shield-heart" aria-hidden="true"></i> Felelős játék <i class="chev fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+          <p>Csak nagykorúak, és csak a helyi jogszabályoknak megfelelően. Játssz annyiból, amennyit el tudsz veszíteni. Ha problémád van, a Lelki Elsősegély Telefonszolgálat a 116-123-as számon segít.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="footer reveal" style="--i:7">
       <div><strong>YNJIMPIX</strong> · Creator Hub</div>
       <div>© <span id="year"></span> · Minden jog fenntartva</div>
       <div>18+ · Felelősségteljes tájékozódás</div>
